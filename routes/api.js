@@ -4,8 +4,8 @@ var mongoose = require('mongoose')
 var bodyParser = require('body-parser')
 /* GET home page. */
 
-
-var db = mongoose.connect('mongodb://localhost/geoShout');
+// 'mongodb://localhost/geoShout'
+var db = mongoose.connect(process.env.mongoConnectString);
 db.connection.on('error',(e)=>{log('error','mongoose connect error:'); log('error',e)});
 db.connection.once('open',()=>{log('info','mongoose connection successful')});
 
