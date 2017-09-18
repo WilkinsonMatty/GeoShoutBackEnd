@@ -5,7 +5,12 @@ var bodyParser = require('body-parser')
 /* GET home page. */
 
 // 'mongodb://localhost/geoShout'
-var db = mongoose.connect(process.env.mongoConnectString);
+let mongoURL = process.env.mongoConnectString
+if(!mongoURL){
+    console.log("using default mongodb://mongo url")
+    mongoURL = "mongodb://mongo"
+}
+var db = mongoose.connect(mongoURL);
 db.connection.on('error',(e)=>{log('error','mongoose connect error:'); log('error',e)});
 db.connection.once('open',()=>{log('info','mongoose connection successful')});
 
@@ -15,7 +20,7 @@ function log(...s){
     console.log(s)
 }
 
-router.post('/api', function(req, res, next) {
+router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 

@@ -3,8 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www",
-    "debug": "DEBUG=myapp:* mongoConnectString='mongodb://localhost/geoShout' nodemon --inspect ./bin/www"
+    "start": "DEBUG=myapp:* node ./bin/www",
+    "debug": "DEBUG=myapp:* mongoConnectString='mongodb://localhost/geoShout' nodemon --inspect ./bin/www",
+    "debugRemote": "DEBUG=myapp:* nodemon --inspect ./bin/www"
   },
   "dependencies": {
     "body-parser": "~1.17.1",
